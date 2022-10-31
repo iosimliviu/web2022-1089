@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<script>
+			window.onload = () => {
+				const button = document.getElementById("myBtn");
+				var container = document.getElementById("title")
+				var image = document.getElementById("thumbnail")
+				var posts = []
+
+				const getUsers = () => {
+					axios.get('https://www.reddit.com/r/Chonkers/top.json?limit=3')
+					.then(response => {				
+
+						posts = response.data.data.children;
+						
+						container.innerHTML = response.data.data.children[0].data.title;
+						image.src = response.data.data.children[0].data.thumbnail;
+					
+						console.log(`GET posts`, posts);
+
+					})
+					.catch(error => console.error(error));
+				};
+
+				const clickHandler = () => {
+					console.log("Butonul a fost apasat.");
+					getUsers()				
+				}
+
+				button.onclick = clickHandler;
+			};
+
+			
+		</script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+
+	<body>
+		<button id="myBtn">
+			Click me!
+		</button>
+	</br>
+
+		<img id="thumbnail" src="" alt="">
+		<p id="title"></p>
+
+
+	</body>
+</html>
