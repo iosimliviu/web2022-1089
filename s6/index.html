@@ -1,0 +1,98 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+	<div class="header">I'm header</div>
+	<div class="phone-header">I'm phone header</div>
+	<div class="container">
+
+		<div class="block">
+
+			<div class="post">
+				<p class="title"></p>
+				<img class="image" src="" alt="">
+			</div>
+
+			<div class="post">
+				<p class="title"></p>
+				<img class="image" src="" alt="">
+			</div>
+
+			<div class="post">
+				<p class="title"></p>
+				<img class="image" src="" alt="">
+			</div>
+		</div>
+
+		<div class="block">
+
+			<div class="post">
+				<p class="title"></p>
+				<img class="image" src="" alt="">
+			</div>
+
+			<div class="post">
+				<p class="title"></p>
+				<img class="image" src="" alt="">
+			</div>
+
+			<div class="post">
+				<p class="title"></p>
+				<img class="image" src="" alt="">
+			</div>
+		</div>
+
+		<div class="block">
+
+			<div class="post">
+				<p class="title"></p>
+				<img class="image" src="" alt="">
+			</div>
+
+			<div class="post">
+				<p class="title"></p>
+				<img class="image" src="" alt="">
+			</div>
+
+			<div class="post">
+				<p class="title"></p>
+				<img class="image" src="" alt="">
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">I'm footer</div>
+
+
+
+
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script>
+		window.onload = () => {
+			const elements = document.querySelectorAll('.post');
+
+			axios.get('https://www.reddit.com/r/Chonkers/top.json?t=month')
+				.then(response => {
+
+					console.log(response);
+
+					elements.forEach((element, index) => {
+						element.querySelector('.title').innerHTML = response.data.data.children[index].data.title;
+						element.querySelector('.image').src = response.data.data.children[index].data.url;
+					});
+
+				})
+				.catch(error => console.error(error));
+		};
+
+
+	</script>
+
+</body>
+
+</html>
