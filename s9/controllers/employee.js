@@ -60,6 +60,7 @@ const getEmployee = async (req, res) => {
 
 
 
+
 module.exports = {
 	createEmployee,
 	getEmployee,

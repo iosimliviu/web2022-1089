@@ -3,7 +3,7 @@ const app = express();
 const indexRouter = require("./routes/index");
 const sequelize = require("./models/index").sequelize;
 
-let port = 8081;
+let port = 8081; //8080, 5000
 
 app.use(express.json());
 
