@@ -1,4 +1,5 @@
 import './App.css';
+import EmployeeList from './EmployeeList'
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
         <p>
           I am app.
         </p>
-        
+        <EmployeeList/>
       </header>
     </div>
   );
