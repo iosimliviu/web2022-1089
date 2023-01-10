@@ -19,6 +19,11 @@ const RecipeList = () => {
         getRecipes();
     }
 
+    const deleteRecipe = async(recipe) => {
+        await axios.delete(`${SERVER_ADDR}/api/recipes/${recipe.id}`);
+        getRecipes();
+    }
+
 
     // when component is mounted, fetch recipes from backend server
     useEffect(() => {
@@ -28,7 +33,7 @@ const RecipeList = () => {
     return (
         <React.Fragment>
             <div className='recipe-list'>
-                {recipes.map((recipe, index) => <RecipeCard key={index} recipe={recipe} />)}
+                {recipes.map((recipe, index) => <RecipeCard key={index} recipe={recipe} onDelete={deleteRecipe}/>)}
             </div>
             <RecipeForm onAdd={addRecipe}/>
         </React.Fragment>
